@@ -7,28 +7,21 @@ const tailwindcss = require('tailwindcss')
 const autoprefixer = require('autoprefixer') // help tailwindcss to work
 
 module.exports = {
-	mode: 'development',
-	devtool: 'eval-cheap-source-map',
-	devServer: {
-		contentBase: path.join(__dirname, 'prod'),
-		port: 3000,
-		hot: true,
-		historyApiFallback: true
-	},
+	mode: 'production',
 
 	resolve: {
 		extensions: ['.js', '.jsx', '.ts', '.tsx'] // import without .ts or .tsx etc....
 	},
 	entry: {
-		index: path.join(__dirname, 'src/index.tsx')
+		index: './src/index.tsx'
 	},
 
 	output: {
 		path: path.resolve(__dirname, 'prod'),
-		filename: '[name].[hash].bundle.js' // for production use [contenthash], for developement use [hash]
+		filename: '[name].[contenthash].bundle.js' // for production use [contenthash], for developement use [hash]
 	},
 	plugins: [
-		new MiniCssExtractPlugin({ filename: '[name].[contenthash].css', chunkFilename: '[id].[contenthash].css' }),
+		new MiniCssExtractPlugin({ filename: '[name].[contenthash].css', chunkFilename: '[name].[contenthash].css' }),
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, './index.html')
 		})
@@ -38,15 +31,10 @@ module.exports = {
 		minimizer: [new TerserPlugin(), new OptimizeCssAssetsPlugin({})],
 
 		moduleIds: 'deterministic',
-		runtimeChunk: 'single',
+		runtimeChunk: 'single', // share same code bewteen js files
 		splitChunks: {
-			cacheGroups: {
-				vendor: {
-					test: /[\\/]node_modules[\\/]/,
-					name: 'vendors',
-					chunks: 'all'
-				}
-			}
+			name: 'runtime',
+			chunks: 'all'
 		}
 	},
 

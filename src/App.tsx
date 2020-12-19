@@ -1,17 +1,15 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import HelloWorld from './components/HelloWorld/HelloWorld'
+import Home from './pages/Home'
 
 const App: React.FC = () => {
 	return (
 		<BrowserRouter>
 			<Switch>
-				<Route exact path='/' component={HelloWorld} />
+				<Route exact path='/' component={Home} />
 			</Switch>
 		</BrowserRouter>
 	)
 }
-
-
 
 export default App
