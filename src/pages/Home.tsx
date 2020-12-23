@@ -1,10 +1,10 @@
 import React from 'react'
-import HelloWorld from '../components/templates/Home'
+import HomeTemplate from '../components/templates/HomeTemplate'
 
 interface Props {}
 
 const Home: React.FC = (props: Props) => {
-	return <HelloWorld />
+	return <HomeTemplate />
 }
 
 export default Home

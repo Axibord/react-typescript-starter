@@ -5,6 +5,8 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin') //
 const TerserPlugin = require('terser-webpack-plugin') // minify js
 const tailwindcss = require('tailwindcss')
 const autoprefixer = require('autoprefixer') // help tailwindcss to work
+const ImageminPlugin = require('imagemin-webpack-plugin').default // minimize images
+const imageminMozjpeg = require('imagemin-mozjpeg') // minimize images
 
 module.exports = {
 	mode: 'production',
@@ -17,6 +19,7 @@ module.exports = {
 	},
 
 	output: {
+		publicPath: '',
 		path: path.resolve(__dirname, 'prod'),
 		filename: '[name].[contenthash].bundle.js' // for production use [contenthash], for developement use [hash]
 	},
@@ -24,6 +27,11 @@ module.exports = {
 		new MiniCssExtractPlugin({ filename: '[name].[contenthash].css', chunkFilename: '[name].[contenthash].css' }),
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, './index.html')
+		}),
+		new ImageminPlugin({
+			// minimize images
+			pngquant: { quality: [0.5, 0.5] },
+			plugins: [imageminMozjpeg({ quality: 50 })]
 		})
 	],
 
