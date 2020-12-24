@@ -1,8 +1,4 @@
 module.exports = {
-	future: {
-		removeDeprecatedGapUtilities: true,
-		purgeLayersByDefault: true
-	},
 	purge: {
 		enabled: false, // turn it to false in developement to have all tailwind classes
 		content: [
@@ -20,5 +16,5 @@ module.exports = {
 		extend: {}
 	},
 	variants: {},
-	plugins: []
+	plugins: [require('@tailwindcss/forms')]
 }

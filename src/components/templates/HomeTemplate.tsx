@@ -11,7 +11,7 @@ const HomeTemplate: React.FC = () => {
 					className='text-green-400 underline'
 					target='_blank'
 					rel='noreferrer'
-					href='https://github.com/axibord/react-webpack-template'
+					href='https://github.com/axibord/react-typescript-starter'
 				>
 					here
 				</a>{' '}
