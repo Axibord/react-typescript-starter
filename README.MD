@@ -1,3 +1,4 @@
+# DEPRECATED
 ## Boilerplate for React projects.
 
 Starter for React projects using Atomic design structure with support to both JSX and TSX, using SASS/SCSS, Eslint, Prettier, TailwindcssV2 and more, all of this using Webpack.<br/>
